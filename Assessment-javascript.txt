@@ -1,0 +1,421 @@
+🔹 Variables (let, const)
+
+What is a variable?
+A variable is a named container used to store data values that can be referenced and manipulated throughout a program.
+Example: let snacks = "Cookies"; (Here, snacks is the variable holding the value "Cookies").
+
+Why do we need variables in programming?
+They allow us to label data with descriptive names, so we can reuse, update, and track information without needing to remember the exact value every time.
+
+Can a program work without storing data?
+Technically, a very simple script could perform a one-off calculation, but any useful program (like a calculator or a social media app) needs to store and process data to function.
+
+- let vs const -
+
+What is the difference between let and const?
+let allows you to reassign a value later, while const (short for constant) creates a binding that cannot be reassigned to a new value.
+
+When should you use let?
+Use let when you know the value of the variable will change over time.
+Example: A counter in a loop or a "score" variable in a game.
+
+When should you use const?
+Use const by default for everything else. It makes your code more predictable and prevents accidental overwrites.
+Example: A configuration setting like const API_KEY = "12345";.
+
+What happens if you try to reassign a const variable?
+JavaScript will throw a TypeError: Assignment to constant variable.
+
+- Reassignment vs Mutation -
+
+Can you change the value of a const variable?
+No, you cannot reassign the variable itself to a new value (e.g., you can't change it from a string to a number).
+
+Can you modify the contents of a const object or array?
+Yes. This is called mutation. While the "container" (the reference) stays the same, the items inside it can change.
+Example: const list = [1, 2]; list.push(3); works perfectly fine.
+
+What is the difference between reassigning and mutating?
+Reassigning is pointing the variable name to a brand-new "box" (value). Mutating is changing the "stuff" inside the current box.
+
+- Scope -
+
+What is block scope?
+Block scope means the variable only exists within the nearest set of curly braces { }.
+
+If a variable is declared inside { }, can it be accessed outside?
+If declared with let or const, no. It is restricted to that block.
+
+Do let and const behave the same in terms of scope?
+Yes, both are block-scoped.
+
+- Hoisting & TDZ -
+
+Can you use a variable before declaring it?
+Technically, JavaScript "hoists" declarations, but with let and const, you cannot access them before the line they are defined on.
+
+What happens if you try with let or const?
+You get a ReferenceError.
+
+What happens when you access a variable before it is declared?
+The program crashes because the variable is in the "Temporal Dead Zone."
+
+What do you think the “temporal dead zone” means?
+It is the period between the start of the block and the moment the variable is officially declared. During this "time," the variable exists but is strictly untouchable.
+
+--------------------------------------------------
+
+🔹 Data Types
+
+What type of data is a string?
+Textual data wrapped in quotes.
+Example: "Hello World"
+
+What type is a number?
+Numeric data, including integers and decimals (floats). JavaScript doesn't distinguish between them.
+
+What is a boolean?
+A logical data type that can only be true or false.
+
+What is the difference between null and undefined?
+undefined means a variable has been declared but has not yet been assigned a value. null is an intentional assignment that represents "nothing" or "empty."
+
+When does a variable become undefined?
+When you declare it without giving it a value: 
+let x; // x is undefined.
+
+- Complex Types -
+
+What is an object?
+A collection of related data stored in "key-value" pairs.
+Example: let user = { name: "Alice", age: 25 };
+
+What is an array?
+A special type of object used to store an ordered list of values.
+Example: let colors = ["red", "green", "blue"];
+
+How is an array different from an object?
+Arrays are ordered and accessed by index (0, 1, 2). Objects are unordered and accessed by keys (names).
+
+- Advanced Types -
+
+What is a symbol and why is it unique?
+A Symbol is a primitive value used to create unique identifiers for object properties. Even if two symbols have the same description, they are never equal.
+
+What is BigInt and when would you need it?
+BigInt is for storing very large integers that exceed the safe limit of the standard Number type. You’d use it for scientific calculations or financial data requiring high precision.
+
+--------------------------------------------------
+
+🔹 Type Coercion
+
+What is type coercion?
+It’s when JavaScript automatically converts a value from one data type to another (e.g., turning a string into a number).
+
+Why does JavaScript convert types automatically?
+To prevent the program from crashing when performing operations on mixed types.
+
+- Implicit vs Explicit -
+
+What is implicit type coercion?
+When JavaScript does the conversion for you behind the scenes.
+Example: 5 + "5" results in "55".
+
+What is explicit type conversion?
+When you manually convert a type using functions like String(), Number(), or Boolean().
+
+- Equality -
+
+What is the difference between == and ===?
+== (Loose Equality) compares values after converting their types. 
+=== (Strict Equality) compares both the value and the type without conversion.
+
+Why can == sometimes give unexpected results?
+Because of coercion. For example, 0 == false is true, which can lead to logic bugs.
+
+- Truthy/Falsy -
+
+What values are considered falsy in JavaScript?
+false, 0, "" (empty string), null, undefined, and NaN.
+
+Is "0" truthy or falsy?
+Truthy, because it is a non-empty string.
+
+Is an empty array truthy or falsy?
+Truthy. All objects (including arrays) are truthy, even if they are empty.
+
+Why do some values behave as true even when they look false?
+JavaScript treats any value that isn't on the "falsy list" as truthy. A string with "0" or an empty array [] are still "things" that exist in memory.
+
+--------------------------------------------------
+
+🔹 Operators
+
+- Arithmetic -
+
+What do arithmetic operators do?
+They perform mathematical calculations like addition (+), subtraction (-), multiplication (*), and division (/).
+
+What is the result of division and modulus?
+Division (/) gives the quotient (e.g., 10 / 2 = 5). 
+Modulus (%) gives the remainder (e.g., 10 % 3 = 1).
+
+- Comparison -
+
+What do comparison operators return?
+A Boolean (true or false).
+
+How does JavaScript compare different data types?
+It usually tries to convert them to numbers first. It's best to compare same-type data.
+
+- Logical -
+
+What does && (AND) mean?
+Returns true only if both sides are true.
+
+What does || (OR) mean?
+Returns true if at least one side is true.
+
+What does ! (NOT) do?
+It flips the boolean value. !true becomes false.
+
+- Ternary -
+
+How can you write an if/else in one line?
+Using the ternary operator: condition ? valueIfTrue : valueIfFalse.
+Example: let access = age > 18 ? "Yes" : "No";
+
+- Nullish Coalescing -
+
+What does ?? do?
+It returns the right-hand side only if the left-hand side is null or undefined.
+
+How is ?? different from ||?
+|| returns the right-hand side if the left is any falsy value (like 0 or ""). 
+?? only triggers for null/undefined.
+
+--------------------------------------------------
+
+🔹 Control Flow
+
+- Conditionals -
+
+How does a program decide what code to run?
+Through structures like conditionals and loops that evaluate expressions.
+
+When should you use if/else?
+When you have a few conditions to check or need complex logic.
+
+When is switch more useful than if/else?
+When you have a single variable that could be one of many specific "fixed" values.
+
+- Loops -
+
+Why do we need loops?
+To run the same block of code multiple times without writing it out manually.
+
+What problem do loops solve?
+They prevent code repetition and allow us to handle large lists of data efficiently.
+
+- Loop Types -
+
+What is the difference between for, while, and do...while?
+for: Used when you know the number of iterations.
+while: Used when looping until a condition changes.
+do...while: Always runs at least once before checking the condition.
+
+When would you use for...in?
+To loop over the properties (keys) of an object.
+
+When would you use for...of?
+To loop over the values in a collection, like an array or a string.
+
+- Loop Control -
+
+What does break do?
+It immediately exits the loop.
+
+What does continue do?
+It skips the rest of the current loop iteration and jumps to the next one.
+
+--------------------------------------------------
+
+🔹 Functions
+
+What is a function?
+A reusable block of code designed to perform a particular task.
+
+Why are functions important?
+They allow for modularity, easier debugging, and reusability.
+
+What problem do functions solve?
+They eliminate the need to write the same logic repeatedly.
+
+- Types -
+
+What is a function declaration?
+Defining a function with the function keyword and a name: function greet() { ... }.
+
+What is a function expression?
+Storing a function inside a variable: const greet = function() { ... };.
+
+What is an arrow function?
+A shorter syntax for writing functions: const greet = () => { ... };.
+
+How are arrow functions different from regular functions?
+They have a shorter syntax and they do not have their own "this" context.
+
+- Parameters -
+
+What happens if you don’t pass an argument?
+The parameter inside the function becomes undefined.
+
+What are default parameters?
+Values that are used if no argument is provided: function greet(name = "Guest") { ... }.
+
+What are rest parameters?
+Used to gather an indefinite number of arguments into a single array using ...: function sum(...numbers) { ... }.
+
+How do rest parameters handle multiple values?
+They pack all extra arguments into an array.
+
+--------------------------------------------------
+
+🔹 Scope & Closures
+
+- Scope -
+
+What is global scope?
+Variables declared outside any function or block, accessible from anywhere.
+
+What is function scope?
+Variables declared inside a function that cannot be accessed from outside.
+
+What is block scope?
+Variables restricted to curly braces { }.
+
+- Lexical Scope -
+
+How does JavaScript determine where a variable can be accessed?
+Through Lexical Scoping (where the variable was physically written).
+
+Can a function access variables outside itself?
+Yes. An inner function always has access to the variables in its outer scope.
+
+- Closures -
+
+What is a closure?
+When a function "remembers" its lexical environment even after that environment has finished executing.
+
+Why can a function remember variables after it finishes running?
+JavaScript keeps the outer scope alive in memory as long as the inner function needs it.
+
+When would closures be useful in real applications?
+For private variables or function factories.
+
+--------------------------------------------------
+
+🔹 this Keyword
+
+What does this refer to in JavaScript?
+The object that is currently executing the code.
+
+Does this always refer to the same thing?
+No. Its value changes depending on how the function is called.
+
+- Context -
+
+What is this in the global context?
+In a browser, it refers to the window object.
+
+What is this inside an object method?
+It refers to the object the method belongs to.
+
+- Binding -
+
+What do call, apply, and bind do?
+They allow you to explicitly set what "this" should be. call/apply run immediately; bind returns a new function.
+
+Why would you want to control what this refers to?
+To ensure a function uses the correct data context.
+
+- Arrow Functions -
+
+Why does this behave differently in arrow functions?
+They don't have their own "this"; they capture it from the enclosing lexical context.
+
+--------------------------------------------------
+
+🔹 DOM Manipulation
+
+What is the DOM?
+The Document Object Model, representing HTML as a tree of objects.
+
+How does JavaScript interact with HTML?
+By using the DOM API to find, change, add, or delete elements.
+
+- Selecting Elements -
+
+What does querySelector do?
+Finds the first element matching a CSS selector.
+
+What does querySelectorAll return?
+A NodeList containing all elements matching the selector.
+
+- Creating Elements -
+
+How do you create a new HTML element using JavaScript?
+document.createElement('tagName').
+
+How do you add it to the page?
+Using methods like .appendChild() or .prepend() on a parent.
+
+- Styling & Attributes -
+
+How can you change classes dynamically?
+Using the classList property.
+
+What is classList used for?
+To add, remove, toggle, or check for CSS classes.
+
+What is dataset used for?
+To access custom "data-" attributes.
+
+--------------------------------------------------
+
+🔹 Events
+
+What is an event in JavaScript?
+A signal that something has happened, like a click or a keypress.
+
+How do web pages respond to user actions?
+By using Event Listeners that run a function when specific events occur.
+
+- Event Handling -
+
+What does addEventListener do?
+Attaches an event handler to an element.
+
+What happens when a user clicks a button?
+The browser detects the click and triggers any functions attached to that event.
+
+- Event Flow -
+
+What is event bubbling?
+When an event runs on an element, then its parent, then all the way up to the document.
+
+What is event capturing?
+The event goes down from the document to the target element.
+
+- Event Delegation -
+
+Why would you attach one event listener to a parent instead of many children?
+It is more efficient for memory and handles new children automatically.
+
+- Controlling Events -
+
+What does preventDefault do?
+Stops the browser's default behavior for an event.
+
+What does stopPropagation do?
+Stops the event from bubbling up to parent elements.
